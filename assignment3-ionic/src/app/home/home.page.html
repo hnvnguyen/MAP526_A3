@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title  class="ion-text-center">
+      Pizza App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row class="ion-justify-content-between ion-padding">
+      <ion-thumbnail >
+        <img src="https://images.unsplash.com/photo-1586096286769-6766496a3226?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=770&amp;q=80">
+      </ion-thumbnail>
+      <ion-button (click)="myOrder()" [routerLink]="['/main']">My Order</ion-button>
+    </ion-row>
+  </ion-grid>
+
+  <ion-text class="ion-padding">Quantity: 
+    <span *ngIf="quantity !== '0' else elseBlock">{{quantity}}</span>
+    <ng-template #elseBlock>none</ng-template>
+  </ion-text>
+
+  <ion-grid class="ion-padding">
+    <ion-row *ngFor="let num of [1,4,7]" class="ion-no-padding">
+      <ion-col *ngFor="let num2 of [num, num+1, num+2]" class="ion-no-padding">
+        <ion-button size="small" expand="full" style="margin:5px 5px" (click)="changeNum($event)">{{num2}}</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-no-padding">
+      <ion-col class="ion-no-padding">
+        <ion-button size="small" expand="full" style="margin:5px 5px" color="danger" (click)="resetNum()">RESET</ion-button>
+      </ion-col>
+      <ion-col class="ion-no-padding">
+        <ion-button size="small" expand="full" style="margin:5px 5px" (click)="changeNum($event)">0</ion-button>
+      </ion-col>
+      <ion-col class="ion-no-padding">
+        <ion-button size="small" expand="full" style="margin:5px 5px" color="success" (click)="add()">ADD</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-list-header  class="ion-no-padding" style="font-size: medium;">
+            <ion-text color="success">Topping: {{topping}}</ion-text>
+          </ion-list-header>
+          <ion-item *ngFor="let top of toppings" class="ion-no-padding" (click)="chooseTopping($event)">
+            <ion-text style="font-size: small;"
+            [ngStyle]="{'color': (topping == top.item) ? '#28ba62': 'white'}">{{top.item}}</ion-text>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col>
+        <ion-list>
+          <ion-list-header class="ion-no-padding" style="font-size: medium;">
+            <ion-text color="success">Size: {{size}}</ion-text>
+          </ion-list-header>
+          <ion-item *ngFor="let s of sizes" class="ion-no-padding" (click)="chooseSize($event)">
+            <ion-text style="font-size: small;"
+            [ngStyle]="{'color': (size == s.item) ? '#28ba62': 'white'}">{{s.item}}</ion-text>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

@@ -1,0 +1,18 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Transaction History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button expand="full" size="small" [routerLink]="['/main']" class="ion-padding-horizontal" >My Order</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let order of orderHistory">
+      <ion-label>
+        <ion-text color="danger"><p>{{order.date.toLocaleString()}}</p></ion-text>
+        <p>${{order.totalPrice}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
+      My Current Order
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button expand="full" size="small" [routerLink]="['/main']" class="ion-padding-horizontal" >My Order</ion-button>
+  <ion-list>
+    <ion-text><h3 class="ion-text-center ion-no-margin">${{order.totalPrice}}</h3></ion-text>
+    <ion-text><h3 class="ion-text-center ">{{order.totalPizza}}</h3></ion-text>
+    <ion-item *ngFor="let p of order.pizza">
+      <ion-grid>
+        <ion-row class="ion-justify-content-between ion-no-padding">
+          <p class="ion-no-margin">Topping: {{p.topping}}</p>
+          <p class="ion-no-margin">${{p.price}}</p>
+        </ion-row>
+        <ion-row class="ion-justify-content-between ion-no-padding">
+          <p class="ion-no-margin">Size: {{p.size}}</p>
+          <p class="ion-no-margin">Quantity: {{p.quantity}}</p>
+        </ion-row>
+        <ion-row>
+          <ion-button expand="full" shape="round" fill="outline" color="danger" (click)="deletePizza(p)">Delete</ion-button>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+      <ion-button color="success" expand="full" (click)="placeOrder()" [routerLink]="['/main']">Place Order</ion-button>
+  </ion-toolbar>
+</ion-footer>

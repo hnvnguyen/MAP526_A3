@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title  class="ion-text-center">
+      Pizza App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button size="small" expand="full" class="ion-padding" [routerLink]="['/current-order']"
+  >Check Current Order</ion-button>
+  <ion-button size="small" expand="full" class="ion-padding" [routerLink]="['/']"
+  >Update Current Order</ion-button>
+  <ion-button size="small" expand="full" class="ion-padding" [routerLink]="['/order-history']"
+  >Previous Orders</ion-button>
+  <ion-button size="small" expand="full" class="ion-padding" (click)="newOrder()" [routerLink]="['/']"
+  >New Order</ion-button>
+</ion-content>
